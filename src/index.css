@@ -95,7 +95,8 @@ html {
 p,
 a,
 span,
-button {
+button,
+li {
   font-size: 1.4rem;
   line-height: 2rem;
 }
