@@ -7,7 +7,7 @@ const StyledModal = styled.div`
   padding: 1.6rem 2rem;
   width: 27.5rem;
   border-radius: 0.3rem;
-  background-color: var(--p300);
+  background-color: var(--b200);
   color: var(--n10);
 `;
 
