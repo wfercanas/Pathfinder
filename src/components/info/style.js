@@ -5,6 +5,7 @@ const StyledInfoContainer = styled.div`
   padding: 1.4rem 3rem;
   display: grid;
   grid-template-columns: 4fr 1fr;
+  row-gap: 0.5rem;
   border-radius: 1.6rem;
   background-color: var(--n400a);
   color: var(--n10);
