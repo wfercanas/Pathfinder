@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 const StyledInfoContainer = styled.div`
+  position: absolute;
+  top: 1rem;
+  right: calc(50% - 15rem);
   width: 30rem;
   padding: 1.4rem 3rem;
   display: grid;
