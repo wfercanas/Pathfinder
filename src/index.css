@@ -88,6 +88,8 @@ html {
 
 * {
   font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 p,
@@ -95,6 +97,7 @@ a,
 span,
 button {
   font-size: 1.4rem;
+  line-height: 2rem;
 }
 
 body {
