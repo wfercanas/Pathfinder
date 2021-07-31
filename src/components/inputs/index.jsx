@@ -9,7 +9,7 @@ import {
 
 const PlaceInput = ({ label, placeholder, handleChange }) => {
   return (
-    <>
+    <div>
       <StyledInputLabel htmlFor={label}>{label}</StyledInputLabel>
       <StyledInputContainer>
         <StyledImage src={world} alt="world icon" />
@@ -22,7 +22,7 @@ const PlaceInput = ({ label, placeholder, handleChange }) => {
           required
         />
       </StyledInputContainer>
-    </>
+    </div>
   );
 };
 
