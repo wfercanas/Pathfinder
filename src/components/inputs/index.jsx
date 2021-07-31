@@ -1,15 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import world from '../../assets/world.svg';
 import {
+  StyledInputWrapper,
   StyledInputLabel,
   StyledInputContainer,
   StyledImage,
   StyledInput,
+  StyledInputAutocomplete,
 } from './style';
+import { Autocomplete } from '../autocomplete';
 
 const PlaceInput = ({ label, placeholder, handleChange }) => {
+  const [focus, setFocus] = useState(false);
+  const [autocomplete, setAutocomplete] = useState(false);
+  const [value, setValue] = useState('');
+
+  useEffect(() => {
+    if (focus) {
+      if (value && !autocomplete) {
+        setAutocomplete(true);
+      } else if (!value) {
+        setAutocomplete(false);
+      }
+    } else {
+      setAutocomplete(false);
+    }
+  }, [value, focus]);
+
   return (
-    <div>
+    <StyledInputWrapper>
       <StyledInputLabel htmlFor={label}>{label}</StyledInputLabel>
       <StyledInputContainer>
         <StyledImage src={world} alt="world icon" />
@@ -17,12 +36,17 @@ const PlaceInput = ({ label, placeholder, handleChange }) => {
           name={label}
           id={label}
           placeholder={placeholder}
-          onChange={handleChange}
+          onChange={({ target }) => setValue(target.value)}
+          onFocus={() => setFocus(true)}
+          onBlur={() => setFocus(false)}
           type="text"
           required
         />
       </StyledInputContainer>
-    </div>
+      <StyledInputAutocomplete display={autocomplete}>
+        <Autocomplete options={['dummy', 'dummy', 'dummy']} />
+      </StyledInputAutocomplete>
+    </StyledInputWrapper>
   );
 };
 

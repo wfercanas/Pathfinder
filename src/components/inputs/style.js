@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+const StyledInputWrapper = styled.div`
+  position: relative;
+`;
+
 const StyledInputLabel = styled.label`
   color: var(--n10);
   font-weight: bold;
@@ -33,4 +37,18 @@ const StyledInput = styled.input`
   }
 `;
 
-export { StyledInputLabel, StyledInputContainer, StyledImage, StyledInput };
+const StyledInputAutocomplete = styled.div`
+  position: absolute;
+  z-index: 1;
+  top: 5.6rem;
+  display: ${({ display }) => (display === false ? 'none' : 'block')};
+`;
+
+export {
+  StyledInputWrapper,
+  StyledInputLabel,
+  StyledInputContainer,
+  StyledImage,
+  StyledInput,
+  StyledInputAutocomplete,
+};
