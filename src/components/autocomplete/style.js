@@ -4,7 +4,7 @@ const StyledAutocompleteContainer = styled.div`
   background-color: var(--n10);
   border-radius: 0.3rem;
   padding: 0.4rem;
-  width: 29.4rem;
+  width: 30.2rem;
 `;
 
 const StyledAutocompleteList = styled.ul`
