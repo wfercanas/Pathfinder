@@ -9,7 +9,7 @@ const StyledButton = styled.button`
   background-color: ${({ type }) => {
     switch (type) {
       case 'modal':
-        return 'var(--p400)';
+        return 'var(--b400)';
       case 'go':
         return 'var(--g200)';
       default:
