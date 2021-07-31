@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal } from '.';
+import { Blanket } from '../blanket';
 
 export default {
   title: 'Components/Modal',
@@ -14,4 +15,11 @@ HomeModal.args = {
   ],
 };
 
-export { HomeModal };
+const HomeModalBackground = (args) => (
+  <Blanket>
+    <Modal {...args} />
+  </Blanket>
+);
+HomeModalBackground.args = { ...HomeModal.args };
+
+export { HomeModal, HomeModalBackground };
