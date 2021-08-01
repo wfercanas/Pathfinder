@@ -122,3 +122,8 @@ code {
   position: absolute;
   top: 0;
 }
+
+#root {
+  display: flex;
+  justify-content: center;
+}
