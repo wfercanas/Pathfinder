@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 const StyledFinderContainer = styled.div`
+  cursor: pointer;
   position: fixed;
-  bottom: -28rem;
+  bottom: ${({ showFinder }) => (showFinder === false ? '-28rem' : '0')};
   border-radius: 1.6rem 1.6rem 0 0;
   display: flex;
   justify-content: center;
