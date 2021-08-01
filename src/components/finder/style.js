@@ -4,6 +4,7 @@ const StyledFinderContainer = styled.div`
   cursor: pointer;
   position: fixed;
   bottom: ${({ showFinder }) => (showFinder === false ? '-28rem' : '0')};
+  transition: bottom 1s ease-out;
   border-radius: 1.6rem 1.6rem 0 0;
   display: flex;
   justify-content: center;
