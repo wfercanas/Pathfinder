@@ -112,7 +112,13 @@ code {
     monospace;
 }
 
+#map,
 #root {
   width: 100vw;
   height: 100vh;
+}
+
+#map {
+  position: absolute;
+  top: 0;
 }
