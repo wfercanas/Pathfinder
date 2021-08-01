@@ -15,7 +15,7 @@ function Map() {
   useEffect(() => {
     loader.load().then((google) => {
       setMap(
-        new google.maps.Map(document.getElementById('root'), {
+        new google.maps.Map(document.getElementById('map'), {
           center: bogota,
           zoom: 10,
           disableDefaultUI: true,
