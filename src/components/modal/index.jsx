@@ -1,34 +1,46 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { Button } from '../buttons';
+import { Blanket } from '../blanket';
 import { StyledModal, StyledModalControls, StyledModalButtons } from './style';
 
-const Modal = ({ labels }) => {
+const Modal = ({ labels, modal, setModal }) => {
+  const [step, setSteps] = useState(0);
+
   const handleNext = () => {
     setSteps((prev) => prev + 1);
   };
 
-  const handleSkip = () => {};
+  const handleSkip = () => {
+    setModal(false);
+  };
 
-  const [step, setSteps] = useState(0);
-  return (
-    <StyledModal>
-      <p>{labels[step]}</p>
-      <StyledModalControls>
-        <p>
-          {step + 1}/{labels.length}
-        </p>
-        <StyledModalButtons>
-          {step + 1 === labels.length ? (
-            <Button type="modal" label="Next" />
-          ) : (
-            <>
-              <Button type="modal" label="Skip" onClick={handleSkip} />
-              <Button type="modal" label="Next" handleClick={handleNext} />
-            </>
-          )}
-        </StyledModalButtons>
-      </StyledModalControls>
-    </StyledModal>
+  if (!modal) {
+    return null;
+  }
+
+  return ReactDOM.createPortal(
+    <Blanket>
+      <StyledModal>
+        <p>{labels[step]}</p>
+        <StyledModalControls>
+          <p>
+            {step + 1}/{labels.length}
+          </p>
+          <StyledModalButtons>
+            {step + 1 === labels.length ? (
+              <Button type="modal" label="Next" handleClick={handleSkip} />
+            ) : (
+              <>
+                <Button type="modal" label="Skip" handleClick={handleSkip} />
+                <Button type="modal" label="Next" handleClick={handleNext} />
+              </>
+            )}
+          </StyledModalButtons>
+        </StyledModalControls>
+      </StyledModal>
+    </Blanket>,
+    document.getElementById('modal')
   );
 };
 
