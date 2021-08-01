@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 const StyledFinderContainer = styled.div`
+  position: fixed;
+  bottom: -28rem;
   border-radius: 1.6rem 1.6rem 0 0;
   display: flex;
   justify-content: center;
