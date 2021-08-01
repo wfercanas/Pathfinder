@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 
-import { StyledMain } from './style';
 import { Map } from '../map';
 import { Modal } from '../../components/modal';
+import { Controls } from '../controls';
 
 const MainContainer = () => {
   const [modal, setModal] = useState(true);
 
   return (
-    <StyledMain>
+    <>
+      <Map />
+      <Controls />  
       <Modal
         modal={modal}
         setModal={setModal}
@@ -17,8 +19,7 @@ const MainContainer = () => {
           "You give me two places and I'll show you the path.",
         ]}
       />
-      <Map />
-    </StyledMain>
+    </>
   );
 };
 
