@@ -6,8 +6,8 @@ const StyledButton = styled.button`
   border: none;
   border-radius: 0.3rem;
   color: var(--n10);
-  background-color: ${({ type }) => {
-    switch (type) {
+  background-color: ${({ purpose }) => {
+    switch (purpose) {
       case 'modal':
         return 'var(--b400)';
       case 'go':

@@ -26,7 +26,7 @@ const Form = () => {
         setNewPlace={setNewDestination}
       />
       <StyledButtonContainer>
-        <Button type="go" label="Go!" />
+        <Button purpose="go" label="Go!" />
       </StyledButtonContainer>
     </StyledForm>
   );

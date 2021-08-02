@@ -29,11 +29,11 @@ const Modal = ({ labels, modal, setModal }) => {
           </p>
           <StyledModalButtons>
             {step + 1 === labels.length ? (
-              <Button type="modal" label="Next" handleClick={handleSkip} />
+              <Button purpose="modal" label="Next" handleClick={handleSkip} />
             ) : (
               <>
-                <Button type="modal" label="Skip" handleClick={handleSkip} />
-                <Button type="modal" label="Next" handleClick={handleNext} />
+                <Button purpose="modal" label="Skip" handleClick={handleSkip} />
+                <Button purpose="modal" label="Next" handleClick={handleNext} />
               </>
             )}
           </StyledModalButtons>
