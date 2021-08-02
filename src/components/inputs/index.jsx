@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import world from '../../assets/world.svg';
 import {
   StyledInputWrapper,
@@ -9,11 +9,11 @@ import {
   StyledInputAutocomplete,
 } from './style';
 import { Autocomplete } from '../autocomplete';
+import { MapContext } from '../../context/MapContext';
 
 const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
   const [focus, setFocus] = useState(false);
   const [autocomplete, setAutocomplete] = useState(false);
-
   useEffect(() => {
     if (focus) {
       if (newPlace && !autocomplete) {
@@ -26,11 +26,33 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
     }
   }, [newPlace, focus, autocomplete]);
 
+  const { loader } = useContext(MapContext);
+  const [autocompleteService, setAutocompleteService] = useState(null);
+  useEffect(() => {
+    loader.load().then((google) => {
+      setAutocompleteService(new google.maps.places.AutocompleteService());
+    });
+  }, []);
+
   const handleFocus = (event) => {
     if (event._reactName === 'onFocus') {
       setFocus(true);
     } else if (event._reactName === 'onBlur') {
       setTimeout(() => setFocus(false), 500);
+    }
+  };
+
+  const [suggestions, setSuggestions] = useState([]);
+  const handleChange = ({ target }) => {
+    setNewPlace(target.value);
+    if (target.value) {
+      autocompleteService.getQueryPredictions(
+        { input: target.value },
+        (predictions, status) => {
+          console.log(predictions);
+          setSuggestions(predictions.slice(0, 3));
+        }
+      );
     }
   };
 
@@ -44,7 +66,7 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
           id={label}
           placeholder={placeholder}
           value={newPlace}
-          onChange={({ target }) => setNewPlace(target.value)}
+          onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleFocus}
           type="text"
@@ -52,10 +74,7 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
         />
       </StyledInputContainer>
       <StyledInputAutocomplete display={autocomplete}>
-        <Autocomplete
-          options={['dummy', 'dummy', 'dummy']}
-          setNewPlace={setNewPlace}
-        />
+        <Autocomplete options={suggestions} setNewPlace={setNewPlace} />
       </StyledInputAutocomplete>
     </StyledInputWrapper>
   );
