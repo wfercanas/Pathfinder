@@ -10,22 +10,21 @@ import {
 } from './style';
 import { Autocomplete } from '../autocomplete';
 
-const PlaceInput = ({ label, placeholder, handleChange }) => {
+const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
   const [focus, setFocus] = useState(false);
   const [autocomplete, setAutocomplete] = useState(false);
-  const [value, setValue] = useState('');
 
   useEffect(() => {
     if (focus) {
-      if (value && !autocomplete) {
+      if (newPlace && !autocomplete) {
         setAutocomplete(true);
-      } else if (!value) {
+      } else if (!newPlace) {
         setAutocomplete(false);
       }
     } else {
       setAutocomplete(false);
     }
-  }, [value, focus]);
+  }, [newPlace, focus, autocomplete]);
 
   return (
     <StyledInputWrapper>
@@ -36,7 +35,8 @@ const PlaceInput = ({ label, placeholder, handleChange }) => {
           name={label}
           id={label}
           placeholder={placeholder}
-          onChange={({ target }) => setValue(target.value)}
+          value={newPlace}
+          onChange={({ target }) => setNewPlace(target.value)}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
           type="text"
