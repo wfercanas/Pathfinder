@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { MapContext } from '../../context/MapContext';
+import { apiKey } from '../../config';
 
 import { Loader } from '@googlemaps/js-api-loader';
 
@@ -7,7 +8,7 @@ function Map() {
   const [map, setMap] = useContext(MapContext);
 
   const loader = new Loader({
-    apiKey: 'AIzaSyDIpChs6-EgIwHbLFYaHmy1-UYkYtsvCaA',
+    apiKey: apiKey,
     version: 'weekly',
   });
   const bogota = { lat: 4.624, lng: -74.063 };
