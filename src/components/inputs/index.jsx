@@ -26,6 +26,14 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
     }
   }, [newPlace, focus, autocomplete]);
 
+  const handleFocus = (event) => {
+    if (event._reactName === 'onFocus') {
+      setFocus(true);
+    } else if (event._reactName === 'onBlur') {
+      setTimeout(() => setFocus(false), 500);
+    }
+  };
+
   return (
     <StyledInputWrapper>
       <StyledInputLabel htmlFor={label}>{label}</StyledInputLabel>
@@ -37,14 +45,17 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
           placeholder={placeholder}
           value={newPlace}
           onChange={({ target }) => setNewPlace(target.value)}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
+          onFocus={handleFocus}
+          onBlur={handleFocus}
           type="text"
           required
         />
       </StyledInputContainer>
       <StyledInputAutocomplete display={autocomplete}>
-        <Autocomplete options={['dummy', 'dummy', 'dummy']} />
+        <Autocomplete
+          options={['dummy', 'dummy', 'dummy']}
+          setNewPlace={setNewPlace}
+        />
       </StyledInputAutocomplete>
     </StyledInputWrapper>
   );
