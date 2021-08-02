@@ -16,9 +16,9 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
   const [autocomplete, setAutocomplete] = useState(false);
   useEffect(() => {
     if (focus) {
-      if (newPlace && !autocomplete) {
+      if (newPlace.description && !autocomplete) {
         setAutocomplete(true);
-      } else if (!newPlace) {
+      } else if (!newPlace.description) {
         setAutocomplete(false);
       }
     } else {
@@ -32,7 +32,7 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
     loader.load().then((google) => {
       setAutocompleteService(new google.maps.places.AutocompleteService());
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleFocus = (event) => {
@@ -45,7 +45,7 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
 
   const [suggestions, setSuggestions] = useState([]);
   const handleChange = ({ target }) => {
-    setNewPlace(target.value);
+    setNewPlace((prev) => ({ ...prev, description: target.value }));
     if (target.value) {
       autocompleteService.getQueryPredictions(
         { input: target.value },
@@ -66,7 +66,7 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
           name={label}
           id={label}
           placeholder={placeholder}
-          value={newPlace}
+          value={newPlace.description}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleFocus}
