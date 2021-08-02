@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Banner } from '../../components/banner';
 import { Info } from '../../components/info';
 import { Finder } from '../../components/finder';
+import { ControlsContextProvider } from '../../context/ControlsContext';
 
 const Controls = () => {
-  const [showFinder, setShowFinder] = useState(false);
-
   return (
-    <>
+    <ControlsContextProvider>
       <Banner />
       <Info />
-      <Finder showFinder={showFinder} setShowFinder={setShowFinder} />
-    </>
+      <Finder />
+    </ControlsContextProvider>
   );
 };
 
