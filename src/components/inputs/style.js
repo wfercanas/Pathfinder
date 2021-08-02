@@ -30,7 +30,7 @@ const StyledInput = styled.input`
   border: none;
   width: 80%;
   background-color: transparent;
-  color: var(-n100);
+  color: var(--n200);
 
   &:focus {
     outline: none;
