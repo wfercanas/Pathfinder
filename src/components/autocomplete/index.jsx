@@ -5,12 +5,15 @@ import {
   StyledAutocompleteList,
 } from './style';
 
-const Autocomplete = ({ options, handleClick }) => {
+const Autocomplete = ({ options, setNewPlace }) => {
   return (
     <StyledAutocompleteContainer>
       <StyledAutocompleteList>
         {options.map((option, index) => (
-          <StyleAutocompleteItem key={index} onClick={handleClick}>
+          <StyleAutocompleteItem
+            key={index}
+            onClick={() => setNewPlace(option)}
+          >
             {option}
           </StyleAutocompleteItem>
         ))}
