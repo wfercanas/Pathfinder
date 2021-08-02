@@ -14,7 +14,7 @@ const Autocomplete = ({ options, setNewPlace }) => {
             key={index}
             onClick={() => setNewPlace(option)}
           >
-            {option}
+            {option.description}
           </StyleAutocompleteItem>
         ))}
       </StyledAutocompleteList>
