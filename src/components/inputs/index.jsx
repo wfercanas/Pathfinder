@@ -32,6 +32,7 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
     loader.load().then((google) => {
       setAutocompleteService(new google.maps.places.AutocompleteService());
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleFocus = (event) => {
