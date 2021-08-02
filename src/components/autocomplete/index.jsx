@@ -12,7 +12,7 @@ const Autocomplete = ({ options, setNewPlace }) => {
         {options.map((option, index) => (
           <StyleAutocompleteItem
             key={index}
-            onClick={() => setNewPlace(option)}
+            onClick={() => setNewPlace(option.description)}
           >
             {option.description}
           </StyleAutocompleteItem>
