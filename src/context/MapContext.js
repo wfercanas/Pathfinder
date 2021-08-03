@@ -10,11 +10,11 @@ const MapContextProvider = ({ children }) => {
     new Loader({
       apiKey: apiKey,
       version: 'weekly',
-      libraries: ['places'],
+      libraries: ['places', 'geocoder'],
     })
   );
 
-  // autocompleteService
+  // create the autocompleteService
   const [autocompleteService, setAutocompleteService] = useState(null);
   useEffect(() => {
     loader.load().then((google) => {
@@ -22,8 +22,18 @@ const MapContextProvider = ({ children }) => {
     });
   }, [loader]);
 
+  // create the geocoderService
+  const [geocoderService, setGeocoderService] = useState(null);
+  useEffect(() => {
+    loader.load().then((google) => {
+      setGeocoderService(new google.maps.Geocoder());
+    });
+  }, [loader]);
+
   return (
-    <MapContext.Provider value={{ map, setMap, loader, autocompleteService }}>
+    <MapContext.Provider
+      value={{ map, setMap, loader, autocompleteService, geocoderService }}
+    >
       {children}
     </MapContext.Provider>
   );
