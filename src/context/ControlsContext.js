@@ -9,6 +9,7 @@ const ControlsContextProvider = ({ children }) => {
   const [currentDestination, setCurrentDestination] = useState('');
   const [currentRouteDistance, setCurrentRouteDistance] = useState('');
   const [currentRouteTimeTravel, setCurrentRouteTimeTravel] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
   const [showFinder, setShowFinder] = useState(false);
 
   return (
@@ -22,12 +23,14 @@ const ControlsContextProvider = ({ children }) => {
         setCurrentOrigin,
         currentDestination,
         setCurrentDestination,
-        showFinder,
-        setShowFinder,
         currentRouteDistance,
         setCurrentRouteDistance,
         currentRouteTimeTravel,
-        setCurrentRouteTimeTravel
+        setCurrentRouteTimeTravel,
+        errorMessage,
+        setErrorMessage,
+        showFinder,
+        setShowFinder,
       }}
     >
       {children}
