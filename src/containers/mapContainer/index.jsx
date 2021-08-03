@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { MapContext } from '../../context/MapContext';
 
-function Map() {
+function MapContainer() {
   const { setMap, loader } = useContext(MapContext);
 
   useEffect(() => {
@@ -21,4 +21,4 @@ function Map() {
   return <></>;
 }
 
-export { Map };
+export { MapContainer };

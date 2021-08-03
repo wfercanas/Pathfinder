@@ -5,7 +5,7 @@ import { Info } from '../../components/info';
 import { Finder } from '../../components/finder';
 import { ControlsContextProvider } from '../../context/ControlsContext';
 
-const Controls = () => {
+const ControlsContainer = () => {
   return (
     <ControlsContextProvider>
       <Banner />
@@ -15,4 +15,4 @@ const Controls = () => {
   );
 };
 
-export { Controls };
+export { ControlsContainer };

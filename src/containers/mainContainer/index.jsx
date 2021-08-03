@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-import { Map } from '../map';
+import { MapContainer } from '../mapContainer';
 import { Modal } from '../../components/modal';
-import { Controls } from '../controls';
+import { ControlsContainer } from '../controlsContainer';
 
 const MainContainer = () => {
   const [modal, setModal] = useState(true);
 
   return (
     <>
-      <Map />
-      <Controls />  
+      <MapContainer />
+      <ControlsContainer />
       <Modal
         modal={modal}
         setModal={setModal}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainContainer } from './containers/main';
+import { MainContainer } from './containers/mainContainer';
 import { MapContextProvider } from './context/MapContext';
 
 function App() {
