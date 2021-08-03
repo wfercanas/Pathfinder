@@ -7,7 +7,6 @@ const StyledBannerContainer = styled.div`
   max-width: 46rem;
   padding: 1.4rem 3rem;
   display: ${({ show }) => (show === '' ? 'none' : 'flex')};
-  /* display: flex; */
   justify-content: center;
   align-items: center;
   background-color: var(--r400);
