@@ -50,7 +50,6 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
       autocompleteService.getQueryPredictions(
         { input: target.value },
         (predictions, status) => {
-          console.log(predictions);
           setSuggestions(predictions.slice(0, 3));
         }
       );
