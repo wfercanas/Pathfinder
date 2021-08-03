@@ -11,6 +11,8 @@ const FormContainer = () => {
     setNewDestination,
     setCurrentOrigin,
     setCurrentDestination,
+    setCurrentRouteDistance,
+    setCurrentRouteTimeTravel,
   } = useContext(ControlsContext);
 
   const { directionsService, directionsRenderer } = useContext(MapContext);
@@ -24,9 +26,12 @@ const FormContainer = () => {
         travelMode: 'DRIVING',
       };
       directionsService.route(request, (result, status) => {
+        console.log(result);
         directionsRenderer.setDirections(result);
-        setCurrentOrigin(newOrigin);
-        setCurrentDestination(newDestination);
+        setCurrentOrigin(result.routes[0].legs[0].start_address);
+        setCurrentDestination(result.routes[0].legs[0].end_address);
+        setCurrentRouteDistance(result.routes[0].legs[0].distance.text);
+        setCurrentRouteTimeTravel(result.routes[0].legs[0].duration.text);
         setNewOrigin('');
         setNewDestination('');
       });
