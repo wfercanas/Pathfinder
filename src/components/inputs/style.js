@@ -41,7 +41,7 @@ const StyledInputAutocomplete = styled.div`
   position: absolute;
   z-index: 1;
   top: 5.6rem;
-  display: ${({ display }) => (display === false ? 'none' : 'block')};
+  display: ${({ show }) => (show === false ? 'none' : 'block')};
 `;
 
 export {

@@ -37,7 +37,7 @@ const Input = ({
           required
         />
       </StyledInputContainer>
-      <StyledInputAutocomplete display={autocomplete}>
+      <StyledInputAutocomplete show={autocomplete}>
         <Autocomplete options={suggestions} setNewPlace={setNewPlace} />
       </StyledInputAutocomplete>
     </StyledInputWrapper>
