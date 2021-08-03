@@ -1,7 +1,7 @@
 import React from 'react';
-import { PlaceInput } from '../inputs';
 import { Button } from '../buttons';
 import { StyledForm, StyledButtonContainer } from './style';
+import { InputContainer } from '../../containers/inputContainer';
 
 const Form = ({
   newOrigin,
@@ -11,13 +11,13 @@ const Form = ({
 }) => {
   return (
     <StyledForm>
-      <PlaceInput
+      <InputContainer
         label="Origin"
         placeholder="Select origin"
         newPlace={newOrigin}
         setNewPlace={setNewOrigin}
       />
-      <PlaceInput
+      <InputContainer
         label="Destination"
         placeholder="Select your destination"
         newPlace={newDestination}
