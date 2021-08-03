@@ -10,7 +10,7 @@ const Info = () => {
     currentRouteTimeTravel,
   } = useContext(ControlsContext);
   return (
-    <StyledInfoContainer>
+    <StyledInfoContainer show={currentOrigin}>
       <StyledPlace>
         <strong>Origin</strong>: {currentOrigin}
       </StyledPlace>

@@ -5,7 +5,7 @@ const StyledInfoContainer = styled.div`
   top: 1rem;
   width: 30rem;
   padding: 1.4rem 3rem;
-  display: grid;
+  display: ${({ show }) => (show !== '' ? 'grid' : 'none')};
   grid-template-columns: 4fr 1fr;
   row-gap: 0.5rem;
   border-radius: 1.6rem;
