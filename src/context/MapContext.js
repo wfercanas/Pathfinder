@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
 import { apiKey } from '../config';
 
@@ -14,8 +14,16 @@ const MapContextProvider = ({ children }) => {
     })
   );
 
+  // autocompleteService
+  const [autocompleteService, setAutocompleteService] = useState(null);
+  useEffect(() => {
+    loader.load().then((google) => {
+      setAutocompleteService(new google.maps.places.AutocompleteService());
+    });
+  }, [loader]);
+
   return (
-    <MapContext.Provider value={{ map, setMap, loader }}>
+    <MapContext.Provider value={{ map, setMap, loader, autocompleteService }}>
       {children}
     </MapContext.Provider>
   );
