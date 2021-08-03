@@ -1,16 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { PlaceInput } from '../inputs';
-import { StyledForm, StyledButtonContainer } from './style';
 import { Button } from '../buttons';
-import { ControlsContext } from '../../context/ControlsContext';
+import { StyledForm, StyledButtonContainer } from './style';
 
-const Form = () => {
-  const {
-    newOrigin,
-    setNewOrigin,
-    newDestination,
-    setNewDestination,
-  } = useContext(ControlsContext);
+const Form = ({
+  newOrigin,
+  setNewOrigin,
+  newDestination,
+  setNewDestination,
+}) => {
   return (
     <StyledForm>
       <PlaceInput
