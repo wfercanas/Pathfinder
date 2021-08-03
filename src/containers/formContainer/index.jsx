@@ -26,7 +26,6 @@ const FormContainer = () => {
         travelMode: 'DRIVING',
       };
       directionsService.route(request, (result, status) => {
-        console.log(result);
         directionsRenderer.setDirections(result);
         setCurrentOrigin(result.routes[0].legs[0].start_address);
         setCurrentDestination(result.routes[0].legs[0].end_address);
