@@ -3,14 +3,8 @@ import React, { useState } from 'react';
 const ControlsContext = React.createContext(null);
 
 const ControlsContextProvider = ({ children }) => {
-  const [newOrigin, setNewOrigin] = useState({
-    description: '',
-    place_id: '',
-  });
-  const [newDestination, setNewDestination] = useState({
-    description: '',
-    place_id: '',
-  });
+  const [newOrigin, setNewOrigin] = useState('');
+  const [newDestination, setNewDestination] = useState(''); 
   const [showFinder, setShowFinder] = useState(false);
 
   return (

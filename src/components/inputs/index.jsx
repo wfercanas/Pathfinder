@@ -16,9 +16,9 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
   const [autocomplete, setAutocomplete] = useState(false);
   useEffect(() => {
     if (focus) {
-      if (newPlace.description && !autocomplete) {
+      if (newPlace && !autocomplete) {
         setAutocomplete(true);
-      } else if (!newPlace.description) {
+      } else if (!newPlace) {
         setAutocomplete(false);
       }
     } else {
@@ -45,7 +45,7 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
 
   const [suggestions, setSuggestions] = useState([]);
   const handleChange = ({ target }) => {
-    setNewPlace((prev) => ({ ...prev, description: target.value }));
+    setNewPlace(target.value);
     if (target.value) {
       autocompleteService.getQueryPredictions(
         { input: target.value },
@@ -65,7 +65,7 @@ const PlaceInput = ({ label, placeholder, newPlace, setNewPlace }) => {
           name={label}
           id={label}
           placeholder={placeholder}
-          value={newPlace.description}
+          value={newPlace}
           onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleFocus}

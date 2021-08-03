@@ -7,10 +7,7 @@ import {
 
 const Autocomplete = ({ options, setNewPlace }) => {
   const handleClick = (option) => {
-    setNewPlace({
-      description: option.description,
-      place_id: option.place_id,
-    });
+    setNewPlace(option.description);
   };
 
   return (
