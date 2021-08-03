@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyledInfoContainer, StyledPlace, StyledRouteData } from './style';
+import { ControlsContext } from '../../context/ControlsContext';
 
-const Info = ({ origin, destination, distance, travelTime }) => {
+const Info = () => {
+  const {
+    currentOrigin,
+    currentDestination,
+    currentRouteDistance,
+    currentRouteTimeTravel,
+  } = useContext(ControlsContext);
   return (
     <StyledInfoContainer>
       <StyledPlace>
-        <strong>Origin</strong>: {origin}
+        <strong>Origin</strong>: {currentOrigin}
       </StyledPlace>
-      <StyledRouteData>{distance}</StyledRouteData>
+      <StyledRouteData>{currentRouteDistance}</StyledRouteData>
       <StyledPlace>
-        <strong>Destination</strong>: {destination}
+        <strong>Destination</strong>: {currentDestination}
       </StyledPlace>
-      <StyledRouteData>{travelTime}</StyledRouteData>
+      <StyledRouteData>{currentRouteTimeTravel}</StyledRouteData>
     </StyledInfoContainer>
   );
 };
