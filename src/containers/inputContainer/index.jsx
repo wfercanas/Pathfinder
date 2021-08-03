@@ -26,8 +26,7 @@ const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
       setAutocomplete(false);
     }
   }, [newPlace, focus, autocomplete]);
-  
-  
+
   const { autocompleteService } = useContext(MapContext);
   const [suggestions, setSuggestions] = useState([]);
   const handleChange = ({ target }) => {
@@ -36,7 +35,9 @@ const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
       autocompleteService.getQueryPredictions(
         { input: target.value },
         (predictions, status) => {
-          setSuggestions(predictions.slice(0, 3));
+          if (status === 'OK') {
+            setSuggestions(predictions.slice(0, 3));
+          }
         }
       );
     }
