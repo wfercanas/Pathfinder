@@ -16,7 +16,11 @@ export default {
 
 const Search = (args) => <Autocomplete {...args} />;
 Search.args = {
-  options: ['CC Titán Plaza', 'CC Plaza Claro', 'CC Hayuelos'],
+  options: [
+    { description: 'CC Titán Plaza' },
+    { description: 'CC Plaza Claro' },
+    { description: 'CC Hayuelos' },
+  ],
 };
 
 export { Search };
