@@ -14,11 +14,7 @@ const StyledInfoContainer = styled.div`
   color: var(--n10);
 `;
 
-const StyledPlace = styled.p`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
+const StyledPlace = styled.p``;
 
 const StyledRouteData = styled.p`
   display: flex;
