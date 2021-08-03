@@ -12,6 +12,7 @@ function MapContainer() {
           center: bogota,
           zoom: 10,
           disableDefaultUI: true,
+          mapTypeId: 'terrain',
         })
       );
     });
