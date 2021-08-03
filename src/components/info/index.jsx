@@ -8,9 +8,10 @@ const Info = () => {
     currentDestination,
     currentRouteDistance,
     currentRouteTimeTravel,
+    errorMessage,
   } = useContext(ControlsContext);
   return (
-    <StyledInfoContainer show={currentOrigin}>
+    <StyledInfoContainer show={currentOrigin} verticalSpace={errorMessage}>
       <StyledPlace>
         <strong>Origin</strong>: {currentOrigin}
       </StyledPlace>

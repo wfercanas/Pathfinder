@@ -6,7 +6,7 @@ import { ControlsContext } from '../../context/ControlsContext';
 const Banner = () => {
   const { errorMessage } = useContext(ControlsContext);
   return (
-    <StyledBannerContainer>
+    <StyledBannerContainer show={errorMessage}>
       <img src={error} alt="error icon" />
       <StyledMessage>{errorMessage}</StyledMessage>
     </StyledBannerContainer>

@@ -2,10 +2,11 @@ import styled from 'styled-components';
 
 const StyledBannerContainer = styled.div`
   position: fixed;
-  bottom: 4.5rem;
+  top: 0.5rem;
   width: 30rem;
   padding: 1.4rem 3rem;
-  display: flex;
+  display: ${({ show }) => (show === '' ? 'none' : 'flex')};
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   background-color: var(--r400);

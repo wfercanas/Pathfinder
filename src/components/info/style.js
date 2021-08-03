@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledInfoContainer = styled.div`
   position: fixed;
-  top: 1rem;
+  top: ${({ verticalSpace }) => (verticalSpace === '' ? '1rem' : '7rem')};
   width: 30rem;
   padding: 1.4rem 3rem;
   display: ${({ show }) => (show !== '' ? 'grid' : 'none')};
