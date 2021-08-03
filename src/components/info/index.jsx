@@ -13,11 +13,11 @@ const Info = () => {
   return (
     <StyledInfoContainer show={currentOrigin} verticalSpace={errorMessage}>
       <StyledPlace>
-        <strong>Origin</strong>: {currentOrigin}
+        <strong>Origin:</strong> {currentOrigin}
       </StyledPlace>
       <StyledRouteData>{currentRouteDistance}</StyledRouteData>
       <StyledPlace>
-        <strong>Destination</strong>: {currentDestination}
+        <strong>Destination:</strong> {currentDestination}
       </StyledPlace>
       <StyledRouteData>{currentRouteTimeTravel}</StyledRouteData>
     </StyledInfoContainer>

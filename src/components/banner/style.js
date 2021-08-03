@@ -3,7 +3,8 @@ import styled from 'styled-components';
 const StyledBannerContainer = styled.div`
   position: fixed;
   top: 0.5rem;
-  width: 30rem;
+  width: 80%;
+  max-width: 46rem;
   padding: 1.4rem 3rem;
   display: ${({ show }) => (show === '' ? 'none' : 'flex')};
   /* display: flex; */

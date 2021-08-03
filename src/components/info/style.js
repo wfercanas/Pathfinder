@@ -3,7 +3,8 @@ import styled from 'styled-components';
 const StyledInfoContainer = styled.div`
   position: fixed;
   top: ${({ verticalSpace }) => (verticalSpace === '' ? '1rem' : '7rem')};
-  width: 30rem;
+  width: 80%;
+  max-width: 46rem;
   padding: 1.4rem 3rem;
   display: ${({ show }) => (show !== '' ? 'grid' : 'none')};
   grid-template-columns: 4fr 1fr;
@@ -13,10 +14,17 @@ const StyledInfoContainer = styled.div`
   color: var(--n10);
 `;
 
-const StyledPlace = styled.p``;
+const StyledPlace = styled.p`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 const StyledRouteData = styled.p`
-  text-align: center;
+  display: flex;
+  text-align: end;
+  justify-self: end;
+  align-items: center;
 `;
 
 export { StyledInfoContainer, StyledPlace, StyledRouteData };
