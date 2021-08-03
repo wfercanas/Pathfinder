@@ -1,12 +1,12 @@
 import React from 'react';
-import { Form } from '../forms';
+import { FormContainer } from '../../containers/formContainer';
 import { StyledFinderContainer, StyledFinderBar } from './style';
 
 const Finder = ({ showFinder, toggleFinder }) => {
   return (
     <StyledFinderContainer showFinder={showFinder} onClick={toggleFinder}>
       <StyledFinderBar />
-      <Form />
+      <FormContainer />
     </StyledFinderContainer>
   );
 };
