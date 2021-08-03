@@ -13,6 +13,8 @@ const FormContainer = () => {
     setCurrentDestination,
     setCurrentRouteDistance,
     setCurrentRouteTimeTravel,
+    errorMessage,
+    setErrorMessage,
   } = useContext(ControlsContext);
 
   const { directionsService, directionsRenderer } = useContext(MapContext);
@@ -26,13 +28,20 @@ const FormContainer = () => {
         travelMode: 'DRIVING',
       };
       directionsService.route(request, (result, status) => {
-        directionsRenderer.setDirections(result);
-        setCurrentOrigin(result.routes[0].legs[0].start_address);
-        setCurrentDestination(result.routes[0].legs[0].end_address);
-        setCurrentRouteDistance(result.routes[0].legs[0].distance.text);
-        setCurrentRouteTimeTravel(result.routes[0].legs[0].duration.text);
-        setNewOrigin('');
-        setNewDestination('');
+        if (status === 'OK') {
+          directionsRenderer.setDirections(result);
+          setCurrentOrigin(result.routes[0].legs[0].start_address);
+          setCurrentDestination(result.routes[0].legs[0].end_address);
+          setCurrentRouteDistance(result.routes[0].legs[0].distance.text);
+          setCurrentRouteTimeTravel(result.routes[0].legs[0].duration.text);
+          setNewOrigin('');
+          setNewDestination('');
+          if (errorMessage) {
+            setErrorMessage('');
+          }
+        } else {
+          setErrorMessage('Route Not Found - Please try a new one');
+        }
       });
     }
   };
