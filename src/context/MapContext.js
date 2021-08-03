@@ -30,9 +30,40 @@ const MapContextProvider = ({ children }) => {
     });
   }, [loader]);
 
+  // create the directionsService
+  const [directionsService, setDirectionsService] = useState(null);
+  useEffect(() => {
+    loader.load().then((google) => {
+      setDirectionsService(new google.maps.DirectionsService());
+    });
+  }, [loader]);
+
+  // create the directionsRenderer
+  const [directionsRenderer, setDirectionsRenderer] = useState(null);
+  useEffect(() => {
+    loader.load().then((google) => {
+      setDirectionsRenderer(new google.maps.DirectionsRenderer());
+    });
+  }, [loader, map]);
+
+  // Attach directionsRenderer to the map
+  useEffect(() => {
+    if (directionsRenderer) {
+      directionsRenderer.setMap(map);
+    }
+  }, [directionsRenderer, map]);
+
   return (
     <MapContext.Provider
-      value={{ map, setMap, loader, autocompleteService, geocoderService }}
+      value={{
+        map,
+        setMap,
+        loader,
+        autocompleteService,
+        geocoderService,
+        directionsService,
+        directionsRenderer,
+      }}
     >
       {children}
     </MapContext.Provider>
