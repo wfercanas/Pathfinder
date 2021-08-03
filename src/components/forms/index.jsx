@@ -8,9 +8,10 @@ const Form = ({
   setNewOrigin,
   newDestination,
   setNewDestination,
+  handleSubmit,
 }) => {
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit}>
       <InputContainer
         label="Origin"
         placeholder="Select origin"
