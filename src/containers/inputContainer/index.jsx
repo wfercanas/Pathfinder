@@ -3,7 +3,17 @@ import { MapContext } from '../../context/MapContext';
 import { Input } from '../../components/inputs';
 
 const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
+  // Control input focus and blur ---------------------------------------------
   const [focus, setFocus] = useState(false);
+  const handleFocus = (event) => {
+    if (event._reactName === 'onFocus') {
+      setFocus(true);
+    } else if (event._reactName === 'onBlur') {
+      setTimeout(() => setFocus(false), 500);
+    }
+  };
+
+  // Toggle autocomplete depending on input focus or blur ---------------------
   const [autocomplete, setAutocomplete] = useState(false);
   useEffect(() => {
     if (focus) {
@@ -16,24 +26,9 @@ const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
       setAutocomplete(false);
     }
   }, [newPlace, focus, autocomplete]);
-
-  const { loader } = useContext(MapContext);
-  const [autocompleteService, setAutocompleteService] = useState(null);
-  useEffect(() => {
-    loader.load().then((google) => {
-      setAutocompleteService(new google.maps.places.AutocompleteService());
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const handleFocus = (event) => {
-    if (event._reactName === 'onFocus') {
-      setFocus(true);
-    } else if (event._reactName === 'onBlur') {
-      setTimeout(() => setFocus(false), 500);
-    }
-  };
-
+  
+  
+  const { autocompleteService } = useContext(MapContext);
   const [suggestions, setSuggestions] = useState([]);
   const handleChange = ({ target }) => {
     setNewPlace(target.value);
@@ -52,11 +47,11 @@ const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
       label={label}
       placeholder={placeholder}
       newPlace={newPlace}
+      autocomplete={autocomplete}
       setNewPlace={setNewPlace}
       handleFocus={handleFocus}
       handleChange={handleChange}
       suggestions={suggestions}
-      autocomplete={autocomplete}
     />
   );
 };
