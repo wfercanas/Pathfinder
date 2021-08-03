@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledBannerContainer = styled.div`
   position: fixed;
-  top: 1rem;
+  bottom: 4.5rem;
   width: 30rem;
   padding: 1.4rem 3rem;
   display: flex;
@@ -10,6 +10,7 @@ const StyledBannerContainer = styled.div`
   align-items: center;
   background-color: var(--r400);
   color: var(--n10);
+  z-index: 1;
 `;
 
 const StyledMessage = styled.p`
