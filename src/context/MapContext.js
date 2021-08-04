@@ -14,7 +14,7 @@ const MapContextProvider = ({ children }) => {
     })
   );
 
-  // create the autocompleteService
+  
   const [autocompleteService, setAutocompleteService] = useState(null);
   useEffect(() => {
     loader.load().then((google) => {
@@ -22,7 +22,7 @@ const MapContextProvider = ({ children }) => {
     });
   }, [loader]);
 
-  // create the geocoderService
+  
   const [geocoderService, setGeocoderService] = useState(null);
   useEffect(() => {
     loader.load().then((google) => {
@@ -30,7 +30,7 @@ const MapContextProvider = ({ children }) => {
     });
   }, [loader]);
 
-  // create the directionsService
+  
   const [directionsService, setDirectionsService] = useState(null);
   useEffect(() => {
     loader.load().then((google) => {
@@ -38,15 +38,13 @@ const MapContextProvider = ({ children }) => {
     });
   }, [loader]);
 
-  // create the directionsRenderer
+  
   const [directionsRenderer, setDirectionsRenderer] = useState(null);
   useEffect(() => {
     loader.load().then((google) => {
       setDirectionsRenderer(new google.maps.DirectionsRenderer());
     });
   }, [loader, map]);
-
-  // Attach directionsRenderer to the map
   useEffect(() => {
     if (directionsRenderer) {
       directionsRenderer.setMap(map);
