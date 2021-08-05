@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+# Pathfinder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Difficulty: 🟣 Easy
 
-## Available Scripts
+## Project URL
+🚀 You can check the project working in the following link: https://wfercanas.github.io/Pathfinder/
 
-In the project directory, you can run:
+## Project Description
+This app provides the user the use case of looking for a route between two places defined through a search form. The app uses the Google Maps API to provide an autocomplete functionality when the user is typing for a place, get the geolocation of both places, get the route between those two points, render a Google Maps map and render in it the route found for the places that were submitted.
+The routes are not confined to a specific region, it works worldwide. A place can be an address or the name of a known location.
 
-### `npm start`
+## Installation
+In order to make a local installation, you should execute:
+```bash
+npm install
+npm run start
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies used
+React (Hooks), Styled-Components, Storybook.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Special challenges
+1. Define a context to control the state of the application. The implementation creates two contexts, one for the map and its services (like rendering routes) and another for the controls provided in the UI.
+2. When using the controls provided in the UI, the app state changes in "complex" ways. For such cases was necessary to replace the useState Hook for multiple individual states to the use of useReducer for controlling one compact state.
+3. Separate the logic of the components from its presentational view. You will find Container components with the logic and they call its presentation-only component counterpart.
+4. The use of context instead of props requires a special treatment of stories in Storybook.
 
-### `npm test`
+## Key Concepts
+1. ReactDOM.createPortal()
+2. React.createContext()
+3. Hooks: useContext(), useState(), useEffect(), useReducer()
+4. Google Maps API: libraries and its services: autocompleteService, geocoderService, directionsService.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
