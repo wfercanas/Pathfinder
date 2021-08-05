@@ -37,3 +37,11 @@ React (Hooks), Styled-Components, Storybook.
 2. React.createContext()
 3. Hooks: useContext(), useState(), useEffect(), useReducer()
 4. Google Maps API: libraries and its services: autocompleteService, geocoderService, directionsService.
+
+## Design
+You can get the design of the app --its foundations, wireframes, mockups and components structure-- in the following link:
+https://www.figma.com/file/QWFIYyJkU9lL541QRWZ7VY/Pathfinder?node-id=0%3A1
+
+## Acknowledgements
+Thanks to [Santiago Sánchez](https://twitter.com/gh0stl1m) for code reviewing the project!💚
+Didn't get to apply all the corrections, but the feedback is deeply appreciated.
