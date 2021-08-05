@@ -40,7 +40,7 @@ React (Hooks), Styled-Components, Storybook.
 
 ## Design
 
-You can get the design of the app --its foundations, wireframes, mockups and components structure-- in tis [Figma](https://www.figma.com/file/QWFIYyJkU9lL541QRWZ7VY/Pathfinder?node-id=0%3A1)
+You can get the design of the app --its foundations, wireframes, mockups and components structure-- in this [Figma](https://www.figma.com/file/QWFIYyJkU9lL541QRWZ7VY/Pathfinder?node-id=0%3A1)
 
 ## Acknowledgements
 
