@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ControlsContext } from '../../context/ControlsContext';
 import {
   StyleAutocompleteItem,
   StyledAutocompleteContainer,
   StyledAutocompleteList,
 } from './style';
 
-const Autocomplete = ({ options, setNewPlace }) => {
+const Autocomplete = ({ options, label }) => {
+  const { controlsDispatch } = useContext(ControlsContext);
   const handleClick = (option) => {
-    setNewPlace(option.description);
+    if (label === 'Origin') {
+      controlsDispatch({ type: 'setNewOrigin', payload: option.description });
+    } else {
+      controlsDispatch({
+        type: 'setNewDestination',
+        payload: option.description,
+      });
+    }
   };
 
   return (

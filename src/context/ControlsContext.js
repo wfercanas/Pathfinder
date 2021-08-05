@@ -1,36 +1,70 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 
 const ControlsContext = React.createContext(null);
 
+const initialState = {
+  newOrigin: '',
+  newDestination: '',
+  currentOrigin: '',
+  currentDestination: '',
+  currentRouteDistance: '',
+  currentRouteTimeTravel: '',
+  errorMessage: '',
+  showFinder: false,
+};
+
+const controlsReducer = (state, action) => {
+  switch (action.type) {
+    case 'setNewOrigin':
+      return {
+        ...state,
+        newOrigin: action.payload,
+      };
+    case 'setNewDestination':
+      return {
+        ...state,
+        newDestination: action.payload,
+      };
+    case 'setCurrentRoute':
+      return {
+        ...state,
+        currentOrigin: action.payload.origin,
+        currentDestination: action.payload.destination,
+        currentRouteDistance: action.payload.routeDistance,
+        currentRouteTimeTravel: action.payload.routeTimeTravel,
+      };
+    case 'resetNewOriginAndDestination':
+      return {
+        ...state,
+        newOrigin: '',
+        newDestination: '',
+      };
+    case 'setErrorMessage':
+      return {
+        ...state,
+        errorMessage: action.payload,
+      };
+    case 'setShowFinder':
+      return {
+        ...state,
+        showFinder: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
 const ControlsContextProvider = ({ children }) => {
-  const [newOrigin, setNewOrigin] = useState('');
-  const [newDestination, setNewDestination] = useState('');
-  const [currentOrigin, setCurrentOrigin] = useState('');
-  const [currentDestination, setCurrentDestination] = useState('');
-  const [currentRouteDistance, setCurrentRouteDistance] = useState('');
-  const [currentRouteTimeTravel, setCurrentRouteTimeTravel] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [showFinder, setShowFinder] = useState(false);
+  const [controlsState, controlsDispatch] = useReducer(
+    controlsReducer,
+    initialState
+  );
 
   return (
     <ControlsContext.Provider
       value={{
-        newOrigin,
-        setNewOrigin,
-        newDestination,
-        setNewDestination,
-        currentOrigin,
-        setCurrentOrigin,
-        currentDestination,
-        setCurrentDestination,
-        currentRouteDistance,
-        setCurrentRouteDistance,
-        currentRouteTimeTravel,
-        setCurrentRouteTimeTravel,
-        errorMessage,
-        setErrorMessage,
-        showFinder,
-        setShowFinder,
+        controlsState,
+        controlsDispatch,
       }}
     >
       {children}

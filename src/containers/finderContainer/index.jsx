@@ -4,14 +4,19 @@ import { Finder } from '../../components/finder';
 import { ControlsContext } from '../../context/ControlsContext';
 
 const FinderContainer = () => {
-  const { showFinder, setShowFinder } = useContext(ControlsContext);
+  const { controlsState, controlsDispatch } = useContext(ControlsContext);
   const toggleFinder = ({ target }) => {
     if (target.tagName === 'DIV') {
-      setShowFinder(!showFinder);
+      controlsDispatch({
+        type: 'setShowFinder',
+        payload: !controlsState.showFinder,
+      });
     }
   };
 
-  return <Finder showFinder={showFinder} toggleFinder={toggleFinder} />;
+  return (
+    <Finder showFinder={controlsState.showFinder} toggleFinder={toggleFinder} />
+  );
 };
 
 export { FinderContainer };

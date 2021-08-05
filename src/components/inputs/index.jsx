@@ -14,7 +14,6 @@ const Input = ({
   label,
   placeholder,
   newPlace,
-  setNewPlace,
   handleChange,
   handleFocus,
   suggestions,
@@ -38,7 +37,7 @@ const Input = ({
         />
       </StyledInputContainer>
       <StyledInputAutocomplete show={autocomplete}>
-        <Autocomplete options={suggestions} setNewPlace={setNewPlace} />
+        <Autocomplete options={suggestions} label={label} />
       </StyledInputAutocomplete>
     </StyledInputWrapper>
   );

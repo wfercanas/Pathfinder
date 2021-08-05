@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { MapContext } from '../../context/MapContext';
+import { ControlsContext } from '../../context/ControlsContext';
 import { Input } from '../../components/inputs';
 
 const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
@@ -28,9 +29,14 @@ const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
   }, [newPlace, focus, autocomplete]);
 
   const { autocompleteService } = useContext(MapContext);
+  const { controlsDispatch } = useContext(ControlsContext);
   const [suggestions, setSuggestions] = useState([]);
   const handleChange = ({ target }) => {
-    setNewPlace(target.value);
+    if (label === 'Origin') {
+      controlsDispatch({ type: 'setNewOrigin', payload: target.value });
+    } else {
+      controlsDispatch({ type: 'setNewDestination', payload: target.value });
+    }
     if (target.value) {
       autocompleteService.getQueryPredictions(
         { input: target.value },
@@ -49,7 +55,6 @@ const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
       placeholder={placeholder}
       newPlace={newPlace}
       autocomplete={autocomplete}
-      setNewPlace={setNewPlace}
       handleFocus={handleFocus}
       handleChange={handleChange}
       suggestions={suggestions}

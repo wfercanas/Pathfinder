@@ -4,57 +4,48 @@ import { ControlsContext } from '../../context/ControlsContext';
 import { MapContext } from '../../context/MapContext';
 
 const FormContainer = () => {
-  const {
-    newOrigin,
-    setNewOrigin,
-    newDestination,
-    setNewDestination,
-    setCurrentOrigin,
-    setCurrentDestination,
-    setCurrentRouteDistance,
-    setCurrentRouteTimeTravel,
-    errorMessage,
-    setErrorMessage,
-  } = useContext(ControlsContext);
-
+  const { controlsState, controlsDispatch } = useContext(ControlsContext);
   const { directionsService, directionsRenderer } = useContext(MapContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (newOrigin && newDestination) {
+    if (controlsState.newOrigin && controlsState.newDestination) {
       const request = {
-        origin: newOrigin,
-        destination: newDestination,
+        origin: controlsState.newOrigin,
+        destination: controlsState.newDestination,
         travelMode: 'DRIVING',
       };
       directionsService.route(request, (result, status) => {
         if (status === 'OK') {
           directionsRenderer.setDirections(result);
-          setCurrentOrigin(result.routes[0].legs[0].start_address);
-          setCurrentDestination(result.routes[0].legs[0].end_address);
-          setCurrentRouteDistance(result.routes[0].legs[0].distance.text);
-          setCurrentRouteTimeTravel(result.routes[0].legs[0].duration.text);
-          setNewOrigin('');
-          setNewDestination('');
-          if (errorMessage) {
-            setErrorMessage('');
+          const data = result.routes[0].legs[0];
+          controlsDispatch({
+            type: 'setCurrentRoute',
+            payload: {
+              origin: data.start_address,
+              destination: data.end_address,
+              routeDistance: data.distance.text,
+              routeTimeTravel: data.duration.text,
+            },
+          });
+          controlsDispatch({
+            type: 'resetNewOriginAndDestination',
+            payload: {},
+          });
+          if (controlsState.errorMessage) {
+            controlsDispatch({ type: 'setErrorMessage', payload: '' });
           }
         } else {
-          setErrorMessage('Route Not Found - Please try a new one');
+          controlsDispatch({
+            type: 'setErrorMessage',
+            payload: 'Route Not Found - Please try a new one',
+          });
         }
       });
     }
   };
 
-  return (
-    <Form
-      newOrigin={newOrigin}
-      newDestination={newDestination}
-      setNewOrigin={setNewOrigin}
-      setNewDestination={setNewDestination}
-      handleSubmit={handleSubmit}
-    />
-  );
+  return <Form handleSubmit={handleSubmit} />;
 };
 
 export { FormContainer };

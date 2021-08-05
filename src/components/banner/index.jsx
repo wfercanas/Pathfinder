@@ -4,11 +4,11 @@ import { StyledBannerContainer, StyledMessage } from './style';
 import { ControlsContext } from '../../context/ControlsContext';
 
 const Banner = () => {
-  const { errorMessage } = useContext(ControlsContext);
+  const { controlsState } = useContext(ControlsContext);
   return (
-    <StyledBannerContainer show={errorMessage}>
+    <StyledBannerContainer show={controlsState.errorMessage}>
       <img src={error} alt="error icon" />
-      <StyledMessage>{errorMessage}</StyledMessage>
+      <StyledMessage>{controlsState.errorMessage}</StyledMessage>
     </StyledBannerContainer>
   );
 };

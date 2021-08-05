@@ -3,23 +3,20 @@ import { StyledInfoContainer, StyledPlace, StyledRouteData } from './style';
 import { ControlsContext } from '../../context/ControlsContext';
 
 const Info = () => {
-  const {
-    currentOrigin,
-    currentDestination,
-    currentRouteDistance,
-    currentRouteTimeTravel,
-    errorMessage,
-  } = useContext(ControlsContext);
+  const { controlsState } = useContext(ControlsContext);
   return (
-    <StyledInfoContainer show={currentOrigin} verticalSpace={errorMessage}>
+    <StyledInfoContainer
+      show={controlsState.currentOrigin}
+      verticalSpace={controlsState.errorMessage}
+    >
       <StyledPlace>
-        <strong>Origin:</strong> {currentOrigin}
+        <strong>Origin:</strong> {controlsState.currentOrigin}
       </StyledPlace>
-      <StyledRouteData>{currentRouteDistance}</StyledRouteData>
+      <StyledRouteData>{controlsState.currentRouteDistance}</StyledRouteData>
       <StyledPlace>
-        <strong>Destination:</strong> {currentDestination}
+        <strong>Destination:</strong> {controlsState.currentDestination}
       </StyledPlace>
-      <StyledRouteData>{currentRouteTimeTravel}</StyledRouteData>
+      <StyledRouteData>{controlsState.currentRouteTimeTravel}</StyledRouteData>
     </StyledInfoContainer>
   );
 };
