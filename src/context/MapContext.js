@@ -67,5 +67,5 @@ const MapContextProvider = ({ children }) => {
 export { MapContext, MapContextProvider };
 
 MapContextProvider.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.node.isRequired,
 };
