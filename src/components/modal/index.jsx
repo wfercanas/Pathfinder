@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import { Button } from '../buttons';
 import { Blanket } from '../blanket';
 import { StyledModal, StyledModalControls, StyledModalButtons } from './style';
@@ -29,11 +30,11 @@ const Modal = ({ labels, modal, setModal }) => {
           </p>
           <StyledModalButtons>
             {step + 1 === labels.length ? (
-              <Button purpose="modal" label="Next" handleClick={handleSkip} />
+              <Button purpose='modal' label='Next' handleClick={handleSkip} />
             ) : (
               <>
-                <Button purpose="modal" label="Skip" handleClick={handleSkip} />
-                <Button purpose="modal" label="Next" handleClick={handleNext} />
+                <Button purpose='modal' label='Skip' handleClick={handleSkip} />
+                <Button purpose='modal' label='Next' handleClick={handleNext} />
               </>
             )}
           </StyledModalButtons>
@@ -45,3 +46,9 @@ const Modal = ({ labels, modal, setModal }) => {
 };
 
 export { Modal };
+
+Modal.propTypes = {
+  labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+  modal: PropTypes.bool.isRequired,
+  setModal: PropTypes.func.isRequired,
+};

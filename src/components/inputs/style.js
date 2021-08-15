@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledInputWrapper = styled.div`
   position: relative;
@@ -51,4 +52,29 @@ export {
   StyledImage,
   StyledInput,
   StyledInputAutocomplete,
+};
+
+StyledInputLabel.propTypes = {
+  children: PropTypes.string.isRequired,
+  htmlFor: PropTypes.string.isRequired,
+};
+
+StyledImage.propTypes = {
+  src: PropTypes.string.isRequired,
+};
+
+StyledInput.propTypes = {
+  name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  type: PropTypes.string.isRequired,
+  required: PropTypes.bool,
+};
+
+StyledInputAutocomplete.propTypes = {
+  show: PropTypes.bool.isRequired,
 };

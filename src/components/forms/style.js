@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledForm = styled.form`
   display: flex;
@@ -13,3 +14,7 @@ const StyledButtonContainer = styled.div`
 `;
 
 export { StyledForm, StyledButtonContainer };
+
+StyledForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
