@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledAutocompleteContainer = styled.div`
   background-color: var(--n10);
@@ -12,7 +13,7 @@ const StyledAutocompleteList = styled.ul`
   list-style: none;
 `;
 
-const StyleAutocompleteItem = styled.li`
+const StyledAutocompleteItem = styled.li`
   cursor: pointer;
   color: var(--n100);
   padding: 0.6rem 1.6rem;
@@ -25,5 +26,15 @@ const StyleAutocompleteItem = styled.li`
 export {
   StyledAutocompleteContainer,
   StyledAutocompleteList,
-  StyleAutocompleteItem,
+  StyledAutocompleteItem,
+};
+
+StyledAutocompleteList.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.node.isRequired),
+};
+
+StyledAutocompleteItem.propTypes = {
+  children: PropTypes.string,
+  key: PropTypes.number.isRequired,
+  onclick: PropTypes.func.isRequired,
 };

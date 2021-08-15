@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledFinderContainer = styled.div`
   cursor: pointer;
@@ -23,3 +24,8 @@ const StyledFinderBar = styled.div`
 `;
 
 export { StyledFinderContainer, StyledFinderBar };
+
+StyledFinderContainer.propTypes = {
+  showFinder: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};

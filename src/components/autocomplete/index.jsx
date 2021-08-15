@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { ControlsContext } from '../../context/ControlsContext';
 import {
-  StyleAutocompleteItem,
+  StyledAutocompleteItem,
   StyledAutocompleteContainer,
   StyledAutocompleteList,
 } from './style';
@@ -23,12 +24,12 @@ const Autocomplete = ({ options, label }) => {
     <StyledAutocompleteContainer>
       <StyledAutocompleteList>
         {options.map((option, index) => (
-          <StyleAutocompleteItem
+          <StyledAutocompleteItem
             key={index}
             onClick={() => handleClick(option)}
           >
             {option.description}
-          </StyleAutocompleteItem>
+          </StyledAutocompleteItem>
         ))}
       </StyledAutocompleteList>
     </StyledAutocompleteContainer>
@@ -36,3 +37,8 @@ const Autocomplete = ({ options, label }) => {
 };
 
 export { Autocomplete };
+
+Autocomplete.propTypes = {
+  options: PropTypes.array.isRequired,
+  label: PropTypes.string.isRequired,
+};

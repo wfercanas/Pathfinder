@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { MapContext } from '../../context/MapContext';
 import { ControlsContext } from '../../context/ControlsContext';
 import { Input } from '../../components/inputs';
 
-const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
+const InputContainer = ({ label, placeholder, newPlace }) => {
   // Control input focus and blur ---------------------------------------------
   const [focus, setFocus] = useState(false);
   const handleFocus = (event) => {
@@ -54,12 +55,18 @@ const InputContainer = ({ label, placeholder, newPlace, setNewPlace }) => {
       label={label}
       placeholder={placeholder}
       newPlace={newPlace}
-      autocomplete={autocomplete}
-      handleFocus={handleFocus}
       handleChange={handleChange}
+      handleFocus={handleFocus}
       suggestions={suggestions}
+      autocomplete={autocomplete}
     />
   );
 };
 
 export { InputContainer };
+
+InputContainer.propTypes = {
+  label: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  newPlace: PropTypes.string.isRequired,
+};

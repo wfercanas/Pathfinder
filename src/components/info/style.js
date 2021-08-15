@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledInfoContainer = styled.div`
   position: fixed;
@@ -24,3 +25,16 @@ const StyledRouteData = styled.p`
 `;
 
 export { StyledInfoContainer, StyledPlace, StyledRouteData };
+
+StyledInfoContainer.propTypes = {
+  show: PropTypes.string.isRequired,
+  verticalSpace: PropTypes.string.isRequired,
+};
+
+StyledPlace.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+StyledRouteData.propTypes = {
+  children: PropTypes.string.isRequired,
+};

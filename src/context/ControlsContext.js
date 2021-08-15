@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import PropTypes from 'prop-types';
 
 const ControlsContext = React.createContext(null);
 
@@ -73,3 +74,7 @@ const ControlsContextProvider = ({ children }) => {
 };
 
 export { ControlsContext, ControlsContextProvider };
+
+ControlsContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};

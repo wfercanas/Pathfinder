@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormContainer } from '../../containers/formContainer';
 import { StyledFinderContainer, StyledFinderBar } from './style';
 
@@ -12,3 +13,8 @@ const Finder = ({ showFinder, toggleFinder }) => {
 };
 
 export { Finder };
+
+Finder.propTypes = {
+  showFinder: PropTypes.bool.isRequired,
+  toggleFinder: PropTypes.func.isRequired,
+};

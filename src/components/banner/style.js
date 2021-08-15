@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledBannerContainer = styled.div`
   position: fixed;
@@ -19,3 +20,11 @@ const StyledMessage = styled.p`
 `;
 
 export { StyledBannerContainer, StyledMessage };
+
+StyledBannerContainer.propTypes = {
+  show: PropTypes.string.isRequired,
+};
+
+StyledMessage.propTypes = {
+  children: PropTypes.string.isRequired,
+};
