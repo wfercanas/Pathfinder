@@ -45,4 +45,3 @@ You can get the design of the app --its foundations, wireframes, mockups and com
 ## Acknowledgements
 
 Thanks to [Santiago Sánchez](https://twitter.com/gh0stl1m) for code reviewing the project!💚
-Didn't get to apply all the corrections, but the feedback is deeply appreciated.
